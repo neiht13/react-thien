@@ -1,0 +1,18 @@
+{
+    "short_name": "React",
+    "name": "Weather: Do I need an umbrella?",
+    "description": "Weather forecast information",
+    "icons": [
+      {
+        "src": "./public/favicon.ico",
+        "type": "image/ico",
+        "sizes": "192x192"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#3367D6",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#3367D6"
+
+  }
