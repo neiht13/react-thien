@@ -20,6 +20,7 @@
             margin-left: 20px;
             display: inline-block;
             text-decoration: none;
+
             transition: color $transitionDuration;
 
             &:hover {
@@ -110,7 +111,7 @@
         display: inline-block;
         text-decoration: none;
         color: $topbarItemColor;
-        transition: color $transitionDuration;
+        transition: transform .12s ease-out;
 
         span {
             font-size: 1.5em;

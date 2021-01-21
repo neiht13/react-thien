@@ -49,7 +49,7 @@ export function Crud() {
     }, []);
 
 
-   
+
 
     const formatCurrency = (value) => {
         return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
@@ -105,8 +105,8 @@ export function Crud() {
     }
 
     const confirmDeleteProduct = (product) => {
-        setProduct(product);
-        setDeleteProductDialog(true);
+        setSelectedProducts([product]);
+        setDeleteProductsDialog(true);
     }
 
     const deleteProduct = () => {
@@ -318,18 +318,10 @@ export function Crud() {
                     </div>
                 </div>
             </Dialog>
-
-            <Dialog visible={deleteProductDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
-                <div className="confirmation-content">
-                    <i className="pi pi-exclamation-triangle p-mr-3" style={{ fontSize: '2rem' }} />
-                    {product && <span>Are you sure you want to delete <b>{product.name}</b>?</span>}
-                </div>
-            </Dialog>
-
             <Dialog visible={deleteProductsDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductsDialogFooter} onHide={hideDeleteProductsDialog}>
                 <div className="confirmation-content">
                     <i className="pi pi-exclamation-triangle p-mr-3" style={{ fontSize: '2rem' }} />
-                    {product && <span>Are you sure you want to delete the selected products?</span>}
+                    {product && <span>Are you sure you want to delete the product(s)?</span>}
                 </div>
             </Dialog>
         </div>

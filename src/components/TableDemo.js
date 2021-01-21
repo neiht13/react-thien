@@ -30,10 +30,12 @@ export function TableDemo() {
     const renderHeader = () => {
         return (
             <div className="table-header">
-                List of Customers                    
-                
+                List of Customers
+
                 <span>
-                    <Button onClick={exportData}>Export Excel</Button> 
+                    <Button onClick={exportCSV}>Export Csv</Button>
+                    &nbsp;&nbsp;&nbsp;
+                    <Button onClick={exportData}>Export Excel</Button>
                     &nbsp;&nbsp;&nbsp;
                     <span className="p-input-icon-left">
                         <i className="pi pi-search" />
@@ -91,7 +93,7 @@ export function TableDemo() {
                 <span className="p-column-title">Representative</span>
                 <img alt={rowData.representative.name} src={src} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} width="32" style={{ verticalAlign: 'middle' }} />
                 <span style={{ verticalAlign: 'middle', marginLeft: '.5em' }}>{rowData.representative.name}</span>
-            </React.Fragment>   
+            </React.Fragment>
         );
     }
 
@@ -109,6 +111,9 @@ export function TableDemo() {
         var wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Customers");
         XLSX.writeFile(wb, "customers.xlsx");
+    }
+    const exportCSV = () => {
+        dt.current.exportCSV();
     }
 
     const headerDataTable = renderHeader();
@@ -135,7 +140,7 @@ export function TableDemo() {
                     </div>
                 </div>
             </div>
-           
+
         </div>
     )
 }
