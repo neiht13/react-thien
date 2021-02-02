@@ -17,7 +17,7 @@ import { MultiSelect } from 'primereact/multiselect';
 import { SelectButton } from 'primereact/selectbutton';
 import { Button } from "primereact/button";
 import { InputNumber } from 'primereact/inputnumber';
-import { CountryService } from '../service/CountryService';
+import { CountryService } from '../../service/CountryService';
 import './InputDemo.scss';
 
 
@@ -156,7 +156,7 @@ export function InputDemo() {
                     </div>
                     <h5>Float Label</h5>
                     <span className="p-float-label">
-                        <InputText id="username" type="text" v-model="floatValue" />
+                        <InputText id="username" type="text" />
                         <label htmlFor="username">Username</label>
                     </span>
                     <h5>Textarea</h5>
@@ -165,7 +165,7 @@ export function InputDemo() {
 
 
                     <AutoComplete placeholder="Search" value={selectedCountry} suggestions={filteredCountries} completeMethod={searchCountry} field="name" dropdown onChange={(e) => setSelectedCountry(e.value)} />
-                    
+
                     <h5>Calender</h5>
                     <Calendar id="icon" showIcon />
                     <h5>Input Number</h5>

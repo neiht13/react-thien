@@ -1,6 +1,7 @@
 import React from 'react';
 import { Chart } from 'primereact/chart';
-
+import { OrganizationChart } from 'primereact/organizationchart';
+import "./ChartDemo.scss";
 export function ChartDemo() {
     //Linear Chart
     const linearData = {
@@ -223,9 +224,77 @@ export function ChartDemo() {
             }
         }
     };
-
+    const dataOrgChart = [{
+        label: 'League',
+        expanded: true,
+        avatar: 'laliga',
+        name: 'La Liga',
+        className: 'p-player',
+        children: [
+            {
+                label: 'F.C.',
+                expanded: true,
+                avatar: 'barca',
+                name: 'Barcelona',
+                className: 'p-player',
+                children: [
+                    {
+                        label: 'Player',
+                        avatar: 'messi',
+                        name: 'Messi',
+                        className: 'p-player',
+                    },
+                    {
+                        label: 'Player',
+                        avatar: 'xavi',
+                        name: 'Xavi',
+                        className: 'p-player',
+                    }
+                ]
+            },
+            {
+                label: 'F.C.',
+                expanded: true,
+                avatar: 'real',
+                name: 'Real Madrid',
+                className: 'p-player',
+                children: [
+                    {
+                        label: 'Player',
+                        name: 'Ronaldo',
+                        avatar: 'ronaldo',
+                        className: 'p-player',
+                    },
+                    {
+                        label: 'Player',
+                        name: 'Zidane',
+                        avatar: 'zidane',
+                        className: 'p-player',
+                    }
+                ]
+            }
+        ]
+    }];
+    const nodeTemplate = (node) => {
+            return (
+                <div>
+                    <div className="node-header">{node.label}</div>
+                    <div className="node-content">
+                        <img alt={node.avatar} src={`assets/layout/images/football/${node.avatar}.jpg`} style={{ width: '32px' }}/>
+                        <div>{node.name}</div>
+                    </div>
+                </div>
+            );
+    }
     return (
         <div className="p-grid p-fluid">
+            <div className="p-col-12">
+                <div className="organizationchart-demo">
+                    <div className="card">
+                        <h5>Advanced</h5>
+                        <OrganizationChart value={dataOrgChart} nodeTemplate={nodeTemplate}></OrganizationChart>
+                    </div>
+                </div>            </div>
             <div className="p-col-12 p-lg-6">
                 <div className="card">
                     <h5 className="centerText">Linear Chart</h5>

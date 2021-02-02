@@ -66,10 +66,11 @@ const AppSubmenu = (props) => {
     }
 
     let items = props.items && props.items.map((item, i) => {
+        let hiddenItem = item.hiddenItem;
         let active = item.active || activeIndex === i;
         let styleClass = classNames(item.badgeStyleClass, { 'active-menuitem': active && !item.to });
 
-        return (
+        return (!hiddenItem &&
             <li className={styleClass} key={i}>
                 {item.items && props.root === true && <div className='arrow'></div>}
                 {renderLink(item, i)}

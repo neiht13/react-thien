@@ -1,0 +1,46 @@
+.login-page {
+    .p-field-login {
+        margin-bottom: 0 !important;
+        .p-inputtext {
+            padding: 1em;
+        }
+    }
+
+    .margin-top-100 {
+        margin-top: 100px;
+    }
+
+    .card-login {
+        width: 80%;
+        padding: 30px !important;
+    }
+
+    .label-login {
+        font-size: 1.5em !important;
+        margin-bottom: 20px !important;
+        font-weight: bold;
+    }
+
+    label {
+        font-weight: bold;
+    }
+    .submit {
+        margin-top: 30px;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .p-inputgroup.p-error{
+        .p-inputgroup-addon {
+            border-color: red;
+        }
+        .p-inputtext {
+            border-color: red;
+        }
+        .pi {
+            color: red;
+        }
+    }
+}
+
+

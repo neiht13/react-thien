@@ -13,7 +13,13 @@
     .p-dialog .product-image {
         width: 150px;
         margin: 0 auto 2rem auto;
+        margin-top: 10px;
         display: block;
+        border-radius: 50%;
+    }
+
+    .p-field > label {
+        font-weight: bold;
     }
 
     .datatable-crud-demo .confirmation-content {

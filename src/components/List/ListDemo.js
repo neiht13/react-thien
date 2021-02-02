@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
-import { ProductService } from '../service/ProductService';
+import { ProductService } from '../../service/ProductService';
 import { Rating } from 'primereact/rating';
 import { PickList } from 'primereact/picklist';
 import { OrderList } from 'primereact/orderlist';

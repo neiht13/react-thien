@@ -4,7 +4,7 @@ import { Toast } from 'primereact/toast';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import * as XLSX from "xlsx";
-import { EventService } from '../service/EventService';
+import { EventService } from '../../service/EventService';
 import './FileDemo.scss'
 import { Card } from 'primereact/card';
 
@@ -38,7 +38,7 @@ export function FileDemo() {
     const onBasicUpload = (e) => {
         toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Basic Mode' });
     }
-    
+
     const onSelected = (e) => {
         toast.current.show({ severity: 'info', summary: 'Selected', detail: 'Excel file was selected.' });
         const f = e.files[0];
@@ -61,13 +61,13 @@ export function FileDemo() {
         } else {
             toast.current.show({ severity: 'warn', summary: 'Error', detail: 'Please select Excel file to upload.' });
         }
-       
+
     }
 
     const renderColumns = (dataTable && Object.keys(dataTable[0]).map(item => {
             return <Column field={item} header={item && item.toUpperCase()} sortable/>
        }));
-    
+
     return (
         <div>
             <Toast ref={toast} />
@@ -76,7 +76,7 @@ export function FileDemo() {
                     <div className="card">
                         <h5>Advanced</h5>
                         <FileUpload maxFileSize={1000000}
-                            emptyTemplate={<p className="p-m-0"></p>} 
+                            emptyTemplate={<p className="p-m-0"></p>}
                             customUpload uploadHandler={onUpload} onSelect={onSelected} multiple={false} accept=".xlsx"
                             emptyTemplate={<p className="p-m-0">Drag and drop files to here to upload.</p>}
                             onValidationFail={onCheckFile} onRemove={onRemove} onClear={onClear}

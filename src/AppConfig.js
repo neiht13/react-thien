@@ -78,7 +78,7 @@ export const AppConfig = (props) => {
 
     return (
         <div ref={config} className={configClassName}>
-            
+
             <div className="layout-config-content-wrapper">
                 <button className="layout-config-button p-link" onClick={toggleConfigurator}>
                     <i className="pi pi-cog"></i>
@@ -131,7 +131,9 @@ export const AppConfig = (props) => {
                 </div>
                 <div className="card">
                     <h5>Raised</h5>
-                    <Button label="Default" className="p-button-raised p-mr-2 p-mb-2" onClick={(e) => onThemeChange(e, 'default')}/> 
+                    <Button label="Default" className="p-button-raised p-mr-2 p-mb-2" onClick={(e) => onThemeChange(e, 'default')}/>
+                    <br/>
+                    <Button label="Bootstrap" className="p-button-raised p-mr-2 p-mb-2" onClick={(e) => onThemeChange(e, 'bootstrap')}/>
                     <br/>
                     <Button label="Fluent" className="p-button-raised p-button-secondary p-mr-2 p-mb-2 " onClick={(e) => onThemeChange(e, 'fluent')}/>
                     <br/>

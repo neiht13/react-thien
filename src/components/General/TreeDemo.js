@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Tree } from 'primereact/tree';
 import { TreeTable } from 'primereact/treetable';
-import { NodeService } from '../service/NodeService';
+import { NodeService } from '../../service/NodeService';
 import { Column } from 'primereact/column';
 
 
@@ -11,15 +11,15 @@ export function TreeDemo() {
 
     const [treeNodes, setTreeNodes] = useState(null);
     const [selectedKeys, setSelectedKeys] = useState(null);
-   
+
 
     const [treeTableNodes, setTreeTableNodes] = useState([]);
     const [selectedNodeKeys2, setSelectedNodeKeys2] = useState([]);
-  
+
     useEffect(() => {
         nodeService.getTreeNodes().then(data => setTreeNodes(data));
         nodeService.getTreeTableNodes().then(data => setTreeTableNodes(data));
-    }, []); 
+    }, []);
 
     return (
         <div className="p-grid">

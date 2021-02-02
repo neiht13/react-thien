@@ -7,8 +7,8 @@ import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
 import { BreadCrumb } from 'primereact/breadcrumb';
 
-import './../layout/flags/flags.css'
-import { CountryService } from '../service/CountryService';
+import '../../layout/flags/flags.css'
+import { CountryService } from '../../service/CountryService';
 
 export function FormLayoutDemo() {
 
@@ -40,7 +40,7 @@ export function FormLayoutDemo() {
             //setUser({firstName: '', lastName: ''})
             toast.current.show({ severity: 'error', summary: 'Submit User Name', detail: 'Please Enter User Name', life: 1500 });
         }
-        
+
 
     }
     const searchCountry = (event) => {
@@ -58,10 +58,10 @@ export function FormLayoutDemo() {
         }, 250);
     }
 
-    
+
     const countryTemplate = (option) => {
         return (
-            <div className="country-item">                
+            <div className="country-item">
                 <span class={`flag flag-${option.code.toLowerCase()}` } style={{width: "30px", height: "20px"}}></span>
                 &nbsp;&nbsp;&nbsp;{option.name}
             </div>
@@ -72,7 +72,7 @@ export function FormLayoutDemo() {
 
 
         <div className="p-grid">
-            
+
             <Toast ref={toast} />
             <div className="p-col-12">
                     <BreadCrumb model={[
@@ -135,7 +135,7 @@ export function FormLayoutDemo() {
                     <div className="p-formgroup" style={{width: "80%"}}>
                         <div className="p-field p-fluid">
                             <label htmlFor="firstname1" className="p-sr-only">Firstname</label>
-                            {user.firstName === '' ? 
+                            {user.firstName === '' ?
                                 <div><InputText id="firstname1" type="text" placeholder="Firstname"  className="p-error" onChange={e => setUser({...user, firstName: e.target.value})}/>
                                 <small className={"p-invalid"}>Enter your first name.</small></div>
                                 : <InputText id="firstname1" type="text" placeholder="Firstname" onChange={e => setUser({...user, firstName: e.target.value})}/>
@@ -144,7 +144,7 @@ export function FormLayoutDemo() {
                         </div>
                         <div className="p-field p-fluid">
                             <label htmlFor="lastname1" className="p-sr-only">Lastname</label>
-                            {user.lastName === '' ? 
+                            {user.lastName === '' ?
                                 <div><InputText id="lastname1" type="text" placeholder="Lastname"  className="p-error" onChange={e => setUser({...user, lastName: e.target.value})}/>
                                 <small className={"p-invalid"}>Enter your last name.</small></div>
                                 : <InputText id="lastname1" type="text" placeholder="Lastname" onChange={e => setUser({...user, lastName: e.target.value})}/>
@@ -184,11 +184,11 @@ export function FormLayoutDemo() {
                             <label htmlFor="city">City</label>
                             <InputText id="city" type="text" />
                         </div>
-                        
+
                         <div className="p-field p-col-12 p-md-3">
                             <label htmlFor="city">Country</label>
                             <div className="p-inputgroup">
-                                
+
                             <span className="p-inputgroup-addon">
                             <span class={`flag flag-${selectedCountry && selectedCountry.code && selectedCountry.code.toLowerCase()}` } style={{width: "28px", height: "19px"}}></span>
                             </span>
@@ -196,7 +196,7 @@ export function FormLayoutDemo() {
 
                             </div>
                         </div>
-                            
+
                         <div className="p-field p-col-12 p-md-3">
                             <label htmlFor="state">State</label>
                             <Dropdown options={cityOptions} value={city} onChange={(event) => setCity(event.value)} autoWidth={false} />

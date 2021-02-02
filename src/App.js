@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
 import { AppTopbar } from './AppTopbar';
@@ -8,24 +8,24 @@ import { AppFooter } from './AppFooter';
 import { AppMenu } from './AppMenu';
 import { AppProfile } from './AppProfile';
 import { AppConfig } from './AppConfig';
-import { Dashboard } from './components/Dashboard';
-import { MiscDemo } from './components/MiscDemo';
-import { EmptyPage } from './components/EmptyPage';
-import { Documentation } from "./components/Documentation";
-import { InputDemo } from './components/InputDemo';
-import { FormLayoutDemo } from './components/FormLayoutDemo';
-import { ButtonDemo } from './components/ButtonDemo';
-import { PanelDemo } from "./components/PanelDemo";
-import { MessageDemo } from './components/MessageDemo';
-import { MenuDemo } from './components/MenuDemo';
-import { OverlayDemo } from './components/OverlayDemo';
-import { FileDemo } from './components/FileDemo';
-import { ChartDemo } from './components/ChartDemo';
-import { TableDemo } from './components/TableDemo';
-import { ListDemo } from './components/ListDemo';
-import { TreeDemo } from './components/TreeDemo';
-import { Crud } from './components/Crud';
-import { useAddToHomescreenPrompt } from "./service/AddToHomescreenPrompt";
+import { Dashboard } from './components/General/Dashboard';
+import { MiscDemo } from './components/Misc/MiscDemo';
+import { EmptyPage } from './components/General/EmptyPage';
+import { Documentation } from "./components/Document/Documentation";
+import { InputDemo } from './components/Input/InputDemo';
+import { FormLayoutDemo } from './components/General/FormLayoutDemo';
+import { ButtonDemo } from './components/General/ButtonDemo';
+import { PanelDemo } from "./components/General/PanelDemo";
+import { MessageDemo } from './components/Message/MessageDemo';
+import { MenuDemo } from './components/General/MenuDemo';
+import { OverlayDemo } from './components/Overlay/OverlayDemo';
+import { FileDemo } from './components/File/FileDemo';
+import { ChartDemo } from './components/Chart/ChartDemo';
+import { TableDemo } from './components/Table/TableDemo';
+import { ListDemo } from './components/List/ListDemo';
+import { TreeDemo } from './components/General/TreeDemo';
+import { Crud } from './components/CRUD/Crud';
+import { LoginPage } from './components/Login/LoginPage';
 
 import PrimeReact from 'primereact/utils';
 
@@ -49,13 +49,9 @@ const App = () => {
     const [inputStyle, setInputStyle] = useState('outlined');
     const [ripple, setRipple] = useState(false);
     const [theme, setTheme] = useState('default');
+    const [hiddenComponents, setHiddenComponents] = useState(undefined);
     const sidebar = useRef();
     let menuClick = false;
-
-    const [prompt, promptToInstall] = useAddToHomescreenPrompt();
-    const [isVisible, setVisibleState] = React.useState(false);
-    const hide = () => setVisibleState(false);
-
     useEffect(() => {
 
         if (mobileMenuActive) {
@@ -65,16 +61,10 @@ const App = () => {
             removeClass(document.body, 'body-overflow-hidden');
         }
     }, [mobileMenuActive]);
-    useEffect(
-        () => {
-          if (prompt) {
-            setVisibleState(true);
-          }
-        },
-        [prompt]
-      );
 
-
+    useEffect(() => {
+        setHiddenComponents(sessionStorage.usn);
+    }, [sessionStorage.usn]);
 
     const onInputStyleChange = (inputStyle) => {
         setInputStyle(inputStyle);
@@ -84,6 +74,7 @@ const App = () => {
         PrimeReact.ripple = e.value;
         setRipple(e.value)
     }
+
 
     const onLayoutModeChange = (mode) => {
         setLayoutMode(mode)
@@ -157,7 +148,7 @@ const App = () => {
                 { label: 'File', icon: 'pi pi-fw pi-file', to: '/file' },
                 { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', to: '/chart' },
                 { label: 'Misc', icon: 'pi pi-fw pi-circle-off', to: '/misc' }
-            ], active: true
+            ], active: true, hiddenItem: hiddenComponents === undefined || hiddenComponents === "undefined"
         },
         {
             label: 'Template Pages', icon: 'pi pi-fw pi-file',
@@ -225,28 +216,10 @@ const App = () => {
         setTheme(e.theme)
         e.originalEvent.preventDefault();
     }
-    const addHome = () => {
-        if (!isVisible) {
-            return <div>TESTTTTTTTTTTTTTTTTT</div>;
-          }
-
-          return (
-            <div onClick={hide}>
-              <button onClick={hide}>Close</button>
-              Hello! Wanna add to homescreen?
-              <button onClick={promptToInstall}>Add to homescreen</button>
-            </div>
-          );
-    }
 
     return (
         <div className={wrapperClass} onClick={onWrapperClick}>
             <AppTopbar onToggleMenu={onToggleMenu} />
-            {isVisible && <div onClick={hide}>
-              <button onClick={hide}>Close</button>
-              Hello! Wanna add to homescreen?
-              <button onClick={promptToInstall}>Add to homescreen</button>
-            </div>}
             <CSSTransition classNames="layout-sidebar" timeout={{ enter: 200, exit: 200 }} in={isSidebarVisible()} unmountOnExit>
                 <div ref={sidebar} className={sidebarClassName} onClick={onSidebarClick}>
                     <AppProfile />
@@ -277,6 +250,7 @@ const App = () => {
                 <Route path="/list" component={ListDemo} />
                 <Route path="/tree" component={TreeDemo} />
                 <Route path="/crud" component={Crud} />
+                <Route path="/login" component={LoginPage} />
             </div>
 
             <AppFooter />
