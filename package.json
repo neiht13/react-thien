@@ -32,10 +32,12 @@
     },
     "scripts": {
         "server": "node ./server.js",
-        "start": "concurrently \"react-scripts start\" \"npm run server\"",
+        "client": "react-scripts start",
+        "start": "concurrently \"npm run client\" \"npm run server\"",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "heroku-postbuild": "npm install && npm run start"
     },
     "eslintConfig": {
         "extends": "react-app"
