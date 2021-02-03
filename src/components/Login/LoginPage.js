@@ -36,7 +36,7 @@ export function LoginPage() {
         }
     }
     const loginAction = () => {
-        axios.post('http://localhost:5000/login', {username, password}
+        axios.post('http://localhost:21760/login', {username, password}
         ).then(res => {
             console.log(res.data);
             sessionStorage.usn = res.data;
