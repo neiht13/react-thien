@@ -35,6 +35,7 @@
         "client-install": "npm install",
         "server": "node server.js",
         "client": "react-scripts start",
+        "build": "react-scripts build",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
         "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
     },
