@@ -1,7 +1,8 @@
 var express = require('express');
 var moment = require('moment');
 var app = express();
-app.listen(5000, function () {
+var port = process.env.PORT || 5000;
+app.listen(port, function () {
     console.log('Server is running...');
 });
 app.use(express.json())
