@@ -48,6 +48,12 @@ export function LoginPage() {
     const showPasswordAction = () => {
         setShowPass(!showPass);
     }
+    const enterAction = (event) => {
+        if(event.key === 'Enter'){
+            console.log('enter press here! ');
+            loginAction(username, password)
+        }
+    }
     const footer = () => {
         return (
             <span>
@@ -85,7 +91,7 @@ export function LoginPage() {
                                 <span className="p-inputgroup-addon">
                                     <i className="pi pi-user"/>
                                 </span>
-                            <InputText id="username" type="text" placeholder="pht" onChange={e => setUsername(e.target.value)}/>
+                            <InputText id="username" type="text" placeholder="pht" onChange={e => setUsername(e.target.value)} onKeyPress={enterAction}/>
                         </div>
                         {username==='' &&  <small className="p-invalid">Enter your username.</small>}
                     </div>
@@ -97,7 +103,7 @@ export function LoginPage() {
                                 <span className="p-inputgroup-addon" onClick={showPasswordAction}>
                                     <i className={showPass ? "pi pi-eye" : "pi pi-eye-slash"}/>
                                 </span>
-                                <InputText id="password" type={showPass ? "text" : "password"} placeholder="132" onChange={e => setPassword(e.target.value)}/>
+                                <InputText id="password" type={showPass ? "text" : "password"} placeholder="132" onChange={e => setPassword(e.target.value)} onKeyPress={enterAction}/>
                         </div>
                         {password==='' &&  <small className="p-invalid">Enter your password.</small>}
 
