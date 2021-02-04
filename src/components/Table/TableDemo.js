@@ -60,7 +60,7 @@ export function TableDemo() {
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:21760/employee').then(res => {
+        axios.get('http://localhost:5000/employee').then(res => {
             setEmployees(res.data)
         });
     }, [refreshPage]);
@@ -179,7 +179,7 @@ export function TableDemo() {
         setSelectItem(null)
     }
     const saveAction = () => {
-        axios.post('http://localhost:21760/employee/new',
+        axios.post('http://localhost:5000/employee/new',
             {
                 name: nameState,
                 gender: genderState,
@@ -193,7 +193,7 @@ export function TableDemo() {
         });
     }
     const deleteAction = () => {
-        axios.post('http://localhost:21760/employee/delete',
+        axios.post('http://localhost:5000/employee/delete',
             selectItem && selectItem.length > 0 ? selectItem : selectedEmployees
         ).then(res => {
             setRefreshPage(refreshPage + 1);
